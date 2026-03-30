@@ -1,26 +1,356 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─────────────────────────────────────────
+   DESIGN TOKENS — единственный источник правды
+   Редактировать только здесь, не в компонентах
+   ───────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* ── Fonts ── */
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;
+  --font-mono:    ui-monospace, monospace;
+
+  /* ── Base colors ── */
+  --color-cream:      #F2E9E2;
+  --color-off-white:  #F2E9E2;
+  --color-near-black: #0E0E0E;
+  --color-white:      #FFFFFF;
+
+  /* ── Section accent colors ── */
+  --color-landing:    #FFFFFF;
+  --color-about:      #FFFFFF;
+  --color-projects:   #000000;
+  --color-services:   #FF1744;
+  --color-pricing:    #FFE500;
+  --color-book:       #4ADE80;
+  --color-orange:     #FF6B00;
+  --color-career:     #FF6B00;
+
+  /* ── Brand accent ── */
+  --color-accent:     #1A6FFF;
+
+
+  /* ── Spacing (8px base) ── */
+  --spacing-xs:  4px;
+  --spacing-sm:  8px;
+  --spacing-md:  24px;
+  --spacing-lg:  40px;
+  --spacing-xl:  64px;
+  --spacing-2xl: 80px;
+
+  /* ── Layout ── */
+  --nav-width: 280px;
+  --container-hero: 650px;
+  --panel-process: 600px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─────────────────────────────────────────
+   CSS RESET
+   ───────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #F2E9E2;
+    color: #0E0E0E;
+    font-family: var(--font-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────
+   ТИПОГРАФИЧЕСКАЯ ШКАЛА
+   ───────────────────────────────────────── */
+
+/* ── Landing layout ── */
+.landing-hero  { flex: 1; min-height: 0; width: 100%; padding: 24px; }
+.landing-stats { height: 184px; flex-shrink: 0; }
+.landing-card  { flex: 1; }
+.work-hero     { height: 600px; flex-shrink: 0; width: 100%; }
+
+/* Бренд-заголовок Landing — KARS на всю ширину */
+.text-brand {
+  font-size: clamp(80px, 33vw, 520px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  text-transform: uppercase;
+}
+
+/* Заголовок секции — 100px фиксированный */
+.text-brand-section {
+  font-size: 100px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+/* Titanic hero — имя / секция ~14vw */
+.text-hero {
+  font-size: clamp(56px, 14vw, 216px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+/* Крупный подзаголовок ~5vw */
+.text-display {
+  font-size: clamp(28px, 5.3vw, 84px);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* Средний заголовок ~2vw */
+.text-section-heading {
+  font-size: clamp(18px, 2vw, 32px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* Навигация */
+.text-nav {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.0;
+}
+
+/* Роль / должность на Landing (~3vw) */
+.text-role {
+  font-size: clamp(24px, 3vw, 48px);
+  font-weight: 300;
+}
+
+@utility h-panel-process {
+  height: var(--panel-process);
+}
+
+/* ─────────────────────────────────────────
+   TAG / CHIP — фиксированная высота 32px
+   Правило: все теги, пиллы, бейджи только через .tag
+   Цвет и рамку добавлять поверх утилитой Tailwind
+   ───────────────────────────────────────── */
+@utility tag {
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 16px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Скрыть скроллбар */
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─────────────────────────────────────────
+   NAV OFFSET
+   ───────────────────────────────────────── */
+.content-area {
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .content-area {
+    margin-left: 280px;
+  }
+}
+
+@utility left-nav {
+  left: var(--nav-width);
+}
+@utility w-nav {
+  width: var(--nav-width);
+}
+
+/* ─────────────────────────────────────────
+   PADDING STANDARD — единое правило для всех контейнеров
+   ───────────────────────────────────────── */
+@utility container-sm {
+  padding: 24px;
+}
+@utility container-lg {
+  padding: 24px;
+}
+
+/* ─────────────────────────────────────────
+   KARS SAFE ZONE — гарантированный зазор 24px
+   Применять ВНУТРИ любой карточки/хедера.
+   Текст прижатый к flex-end упирается в
+   padding-boundary, а не в физический край.
+   ───────────────────────────────────────── */
+.kars-card-safe-zone {
+  padding: 24px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ─────────────────────────────────────────
+   ВЕРТИКАЛЬНЫЕ СЕКЦИИ
+   ───────────────────────────────────────── */
+.section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+   NAVIGATION SIDEBAR
+   ───────────────────────────────────────── */
+.navigation {
+  flex-direction: column;
+  width: var(--nav-width);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--color-cream);
+  padding: 16px;
+  z-index: 50;
+}
+
+.navigation nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.navigation nav::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-footer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-logo-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-near-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0E0E0E;
+  flex-shrink: 0;
+}
+
+/* ── Color tokens: полный цвет активной карточки ── */
+.whiteBackground  { --nav-color: #FFFFFF; --nav-tint: #FFFFFF; --nav-text: #0E0E0E; }
+.blackBackground  { --nav-color: #000000; --nav-tint: #000000; --nav-text: #FFFFFF; }
+.redBackground    { --nav-color: #FF1744; --nav-tint: #FF1744; --nav-text: #FFFFFF; }
+.yellowBackground { --nav-color: #FFE500; --nav-tint: #FFE500; --nav-text: #0E0E0E; }
+.greenBackground  { --nav-color: #4ADE80; --nav-tint: #4ADE80; --nav-text: #0E0E0E; }
+.orangeBackground { --nav-color: #FF6B00; --nav-tint: #FF6B00; --nav-text: #FFFFFF; }
+
+/* ── A. Неактивное: приглушённый тинт, нет рамки, тёмный текст ── */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--nav-tint);
+  color: var(--nav-text, #0E0E0E);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── B. Активное: полный цвет, нет рамки, flex-[3] ── */
+.nav-item.active {
+  flex: 3;
+  background-color: var(--nav-color);
+  border-color: transparent;
+  color: var(--nav-text, #fff);
+}
+
+/* ── C. Hover (только неактивные): прозрачный фон, рамка, акцентный текст ── */
+.nav-item:not(.active):hover {
+  background-color: transparent;
+  border-color: #000;
+  color: #0E0E0E;
+}
+
+/* ── Project nav: одинаковая высота, чёрный активный, обводка неактивный ── */
+.nav-item-project {
+  flex: none !important;
+  height: 110px;
+  background-color: transparent;
+  color: var(--color-near-black);
+  border-color: var(--color-near-black);
+}
+
+.nav-item-project.active {
+  background-color: var(--color-near-black);
+  color: var(--color-cream);
+  border-color: transparent;
+}
+
+.nav-item-project:not(.active):hover {
+  background-color: var(--color-near-black);
+  color: var(--color-cream);
+  border-color: transparent;
+}
+
+/* ── Типографика ── */
+.nav-item-number {
+  align-self: flex-start;
+  font-family: ui-monospace, monospace;
+  font-size: 0.875rem;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.nav-item.active .nav-item-number {
+  opacity: 1;
+}
+
+.nav-item-text {
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: inherit;
+}
+
+.nav-item.active .nav-item-text {
+  font-weight: 600;
 }
