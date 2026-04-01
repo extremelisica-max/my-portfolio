@@ -1,0 +1,9 @@
+Проект: Effaliya
+Нужно скринов: 5
+
+Переименуй файлы и положи в эту папку:
+  screen-01.jpg
+  screen-02.jpg
+  screen-03.jpg
+  screen-04.jpg
+  screen-05.jpg

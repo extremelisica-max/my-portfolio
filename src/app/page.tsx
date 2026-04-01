@@ -3,13 +3,14 @@
 import { useState, useEffect } from "react";
 import Nav from "@/components/sections/Nav";
 import Landing from "@/components/sections/Landing";
+import Clients from "@/components/sections/Clients";
 import Work from "@/components/sections/Work";
 import Process from "@/components/sections/Process";
-import ServicesPricing from "@/components/sections/ServicesPricing";
+import Skills from "@/components/sections/Skills";
 import Career from "@/components/sections/Career";
 import Contact from "@/components/sections/Contact";
 
-const SECTION_IDS = ["landing", "projects", "process", "services", "career", "book"] as const;
+const SECTION_IDS = ["landing", "projects", "process", "skills", "career", "book"] as const;
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("projects");
@@ -44,9 +45,10 @@ export default function Home() {
       <Nav activeSection={activeSection} onNavigate={navigateTo} />
       <div className="content-area flex flex-col">
         <Landing />
+        <Clients />
         <Work />
         <Process />
-        <ServicesPricing />
+        <Skills />
         <Career />
         <Contact />
       </div>

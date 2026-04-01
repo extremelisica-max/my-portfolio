@@ -1,0 +1,8 @@
+Проект: Vnish
+Нужно скринов: 4
+
+Переименуй файлы и положи в эту папку:
+  screen-01.jpg
+  screen-02.jpg
+  screen-03.jpg
+  screen-04.jpg

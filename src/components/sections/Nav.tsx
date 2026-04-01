@@ -17,12 +17,12 @@ export default function Nav({ activeSection, onNavigate }: Props) {
 
   return (
     <>
-      {/* ── Avatar — top-center of viewport ── */}
+      {/* ── Logo — top-center of viewport ── */}
       <div
-        className="hidden lg:flex fixed top-0 left-0 w-nav z-50 justify-center pt-4"
+        className="hidden lg:flex fixed top-0 left-0 w-nav z-50 justify-center pt-6"
         aria-hidden="true"
       >
-        <div className="sidebar-logo-circle">АК</div>
+        <img src="/logo.svg" alt="GTCH logo" width={80} height={19} />
       </div>
 
       {/* ── Desktop sidebar ── */}
@@ -44,8 +44,20 @@ export default function Nav({ activeSection, onNavigate }: Props) {
                 className={`nav-item ${link.colorClass}${isActive ? " active" : ""}`}
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               >
-                <span className="nav-item-number">{link.index}</span>
-                <span className="nav-item-text">{link.label}</span>
+                <div className="flex items-start justify-between">
+                  <svg
+                    aria-hidden="true"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="shrink-0 opacity-60"
+                  >
+                    <path d={link.icon} />
+                  </svg>
+                  <span className="nav-item-number">{link.index}</span>
+                </div>
+                <span className="nav-item-text mt-auto">{link.label}</span>
               </motion.button>
             );
           })}
@@ -58,7 +70,7 @@ export default function Nav({ activeSection, onNavigate }: Props) {
         aria-expanded={mobileOpen}
         data-testid="nav-burger"
         onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-50 w-10 h-10 rounded-2xl border border-black bg-off-white flex flex-col items-center justify-center gap-1.5"
+        className="lg:hidden fixed top-4 left-4 z-50 w-10 h-10 rounded-2xl border border-near-black bg-off-white flex flex-col items-center justify-center gap-1.5"
       >
         {[0, 1, 2].map((i) => (
           <span key={i} aria-hidden="true" className="w-5 h-px bg-near-black block" />

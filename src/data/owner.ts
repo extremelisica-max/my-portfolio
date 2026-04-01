@@ -7,7 +7,7 @@ export interface SiteOwner {
   email: string;
   phone: string;
   behance: string;
-  whatsapp: string;
+  telegram: string;
   yearsOfExp: number;
   openToWork: boolean;
 }
@@ -21,7 +21,7 @@ export const owner: SiteOwner = {
   email: "extremelisica@gmail.com",
   phone: "+7 (939) 706-66-63",
   behance: "https://behance.net/extremelis4b1e",
-  whatsapp: "https://wa.me/79397066663",
+  telegram: "https://t.me/Karsun_a",
   yearsOfExp: 5,
   openToWork: true,
 };

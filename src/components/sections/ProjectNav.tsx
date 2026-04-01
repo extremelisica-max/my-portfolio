@@ -50,7 +50,7 @@ export default function ProjectNav() {
         aria-expanded={mobileOpen}
         data-testid="nav-burger"
         onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-50 w-10 h-10 rounded-2xl border border-black bg-off-white flex flex-col items-center justify-center gap-1.5"
+        className="lg:hidden fixed top-4 left-4 z-50 w-10 h-10 rounded-2xl border border-near-black bg-off-white flex flex-col items-center justify-center gap-1.5"
       >
         {[0, 1, 2].map((i) => (
           <span key={i} aria-hidden="true" className="w-5 h-px bg-near-black block" />
