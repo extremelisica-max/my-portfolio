@@ -7,7 +7,7 @@ export default function Services() {
       aria-label="Услуги"
       data-testid="section-services"
       data-ai-action="view-services"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2 h-screen"
+      className="section pt-2 pb-6 flex flex-col gap-2 h-screen"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-services border border-cream/15 overflow-hidden">
@@ -32,7 +32,7 @@ export default function Services() {
               className="bg-services rounded-3xl border border-cream/10 px-6 py-4 flex items-center gap-4"
             >
               <span className="text-xs font-mono text-cream/40 w-6 shrink-0">{item.index}</span>
-              <p className="font-medium text-cream text-sm w-48 shrink-0">{item.title}</p>
+              <p className="font-semibold text-cream text-sm w-48 shrink-0">{item.title}</p>
               <p className="text-sm text-cream/60 flex-1">{item.description}</p>
               <div className="flex flex-wrap gap-1.5 w-56 shrink-0 justify-end">
                 {item.tags.map((tag) => (

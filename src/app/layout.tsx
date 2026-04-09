@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = localFont({
-  src: "../../public/Inter-Regular.ttf",
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "600", "900"],
   variable: "--font-inter",
   display: "swap",
 });

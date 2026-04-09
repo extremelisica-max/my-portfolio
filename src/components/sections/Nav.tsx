@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { navLinks } from "@/data/nav";
 
@@ -22,7 +23,7 @@ export default function Nav({ activeSection, onNavigate }: Props) {
         className="hidden lg:flex fixed top-0 left-0 w-nav z-50 justify-center pt-6"
         aria-hidden="true"
       >
-        <img src="/logo.svg" alt="GTCH logo" width={80} height={19} />
+        <Image src="/logo.svg" alt="GTCH logo" width={80} height={19} />
       </div>
 
       {/* ── Desktop sidebar ── */}
@@ -50,10 +51,14 @@ export default function Nav({ activeSection, onNavigate }: Props) {
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
-                    fill="currentColor"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="shrink-0 opacity-60"
                   >
-                    <path d={link.icon} />
+                    {link.icon}
                   </svg>
                   <span className="nav-item-number">{link.index}</span>
                 </div>

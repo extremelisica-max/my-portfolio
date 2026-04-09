@@ -8,7 +8,7 @@ export default function Skills() {
       aria-label={skillsContent.sectionLabel}
       data-testid="section-skills"
       data-ai-action="view-skills"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2"
+      className="section pt-2 pb-6 flex flex-col gap-2"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-near-black border border-cream/15 overflow-hidden">
@@ -30,10 +30,10 @@ export default function Skills() {
             key={group.category}
             data-testid={`skill-group-${groupIndex + 1}`}
             data-ai-action="view-skill-group"
-            className="bg-white rounded-3xl p-8 border border-near-black/10"
+            className="bg-white rounded-3xl p-6 border border-near-black/10"
           >
-            <div className="flex items-start justify-between mb-8">
-              <h2 className="text-2xl font-black tracking-tighter text-near-black leading-none">
+            <div className="flex items-start justify-between mb-6">
+              <h2 className="heading-1 text-near-black">
                 {group.category}
               </h2>
               <span
@@ -49,7 +49,7 @@ export default function Skills() {
                   {i > 0 && (
                     <div className="border-t border-near-black/10 my-3" aria-hidden="true" />
                   )}
-                  <p className="text-near-black text-sm font-medium">{item.name}</p>
+                  <p className="text-near-black text-sm font-semibold">{item.name}</p>
                   <p className="text-near-black/50 text-xs mt-1">{item.context}</p>
                 </li>
               ))}

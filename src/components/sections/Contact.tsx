@@ -7,7 +7,7 @@ export default function Contact() {
       aria-label="Связаться"
       data-testid="section-book"
       data-ai-action="view-contact"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2 h-screen"
+      className="section !min-h-0 pt-2 pb-6 flex flex-col gap-2"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-near-black border border-cream/15 overflow-hidden">
@@ -33,12 +33,14 @@ export default function Contact() {
               aria-label={ch.cta}
               data-testid={`contact-row-${ch.label.toLowerCase().replace(/\s+/g, "-")}`}
               data-ai-action={`contact-${ch.label.toLowerCase().replace(/\s+/g, "-")}`}
-              className="bg-white rounded-3xl border border-near-black/10 px-6 py-4 flex items-center gap-4 transition-colors duration-300 hover:border-near-black/25"
+              className={`rounded-3xl border px-6 py-4 flex flex-col gap-1 md:flex-row md:items-center md:gap-4 transition-colors duration-300 ${ch.primary ? "bg-near-black border-near-black text-cream hover:bg-near-black/80" : "bg-white border-near-black/10 hover:border-near-black/25"}`}
             >
-              <p className="text-xs uppercase tracking-widest text-near-black/50 w-48 shrink-0">{ch.label}</p>
-              <p className="font-medium text-near-black text-sm flex-1">{ch.cta}</p>
-              <p className="text-sm text-near-black/40 text-right shrink-0">{ch.value}</p>
-              <span aria-hidden="true" className="text-near-black/60 shrink-0 ml-2">→</span>
+              <p className={`text-xs uppercase tracking-widest md:w-48 md:shrink-0 ${ch.primary ? "text-cream/50" : "text-near-black/50"}`}>{ch.label}</p>
+              <div className="flex items-center gap-2 md:contents">
+                <p className={`font-semibold text-sm flex-1 ${ch.primary ? "text-cream" : "text-near-black"}`}>{ch.cta}</p>
+                <p className={`text-sm md:text-right md:shrink-0 ${ch.primary ? "text-cream/50" : "text-near-black/40"}`}>{ch.value}</p>
+                <span aria-hidden="true" className={`shrink-0 md:ml-2 ${ch.primary ? "text-cream/60" : "text-near-black/60"}`}>→</span>
+              </div>
             </a>
           </li>
         ))}

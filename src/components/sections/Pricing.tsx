@@ -7,7 +7,7 @@ export default function Pricing() {
       aria-label="Цены"
       data-testid="section-pricing"
       data-ai-action="view-pricing"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2 h-screen"
+      className="section pt-2 pb-6 flex flex-col gap-2 h-screen"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-pricing border border-near-black/10 overflow-hidden">
@@ -43,7 +43,7 @@ export default function Pricing() {
                 {tier.index}
               </span>
               <p
-                className={`font-medium text-sm w-40 shrink-0 ${
+                className={`font-semibold text-sm w-40 shrink-0 ${
                   tier.highlighted ? "text-cream" : "text-near-black"
                 }`}
               >
@@ -72,14 +72,14 @@ export default function Pricing() {
               </div>
               <div className="w-36 shrink-0 text-right">
                 <p
-                  className={`text-sm font-medium ${
+                  className={`text-sm font-semibold ${
                     tier.highlighted ? "text-cream" : "text-near-black"
                   }`}
                 >
                   {tier.price}
                 </p>
                 <p
-                  className={`text-xs mt-0.5 ${
+                  className={`text-xs mt-1 ${
                     tier.highlighted ? "text-cream/50" : "text-near-black/50"
                   }`}
                 >
@@ -87,9 +87,9 @@ export default function Pricing() {
                 </p>
               </div>
               <a
-                href="#book"
+                href="/#book"
                 data-ai-action={`pricing-cta-${tier.index}`}
-                className={`text-sm font-medium w-20 shrink-0 text-right transition-opacity hover:opacity-70 ${
+                className={`text-sm font-semibold w-20 shrink-0 text-right transition-opacity hover:opacity-70 ${
                   tier.highlighted ? "text-cream" : "text-near-black"
                 }`}
               >

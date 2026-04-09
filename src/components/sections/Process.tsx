@@ -7,7 +7,7 @@ export default function Process() {
       aria-label="Как я работаю"
       data-testid="section-process"
       data-ai-action="view-process"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2"
+      className="section pt-2 pb-6 flex flex-col gap-2"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-near-black border border-cream/15 overflow-hidden">

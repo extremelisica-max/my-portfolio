@@ -3,7 +3,7 @@ import { processSteps, type ProcessStep } from "@/data/process";
 function CardHeader({ step }: { step: ProcessStep }) {
   return (
     <div className="flex items-start justify-between">
-      <h3 className="text-4xl font-black tracking-tighter text-near-black leading-none">
+      <h3 className="heading-2 text-near-black">
         {step.shortTitle}
       </h3>
       <span
@@ -42,7 +42,7 @@ function DefaultCard({ step, className }: { step: ProcessStep; className?: strin
     <div
       data-testid={`process-card-${step.index}`}
       data-ai-action={`view-process-step-${step.index}`}
-      className={`bg-white rounded-3xl p-8 border border-near-black/10 flex flex-col${className ? ` ${className}` : ""}`}
+      className={`bg-white rounded-3xl p-6 border border-near-black/10 flex flex-col${className ? ` ${className}` : ""}`}
     >
       <CardHeader step={step} />
       <CardDuration duration={step.duration} />
@@ -50,7 +50,7 @@ function DefaultCard({ step, className }: { step: ProcessStep; className?: strin
       <div className="mt-auto pt-6">
         <p className="text-sm text-near-black/60 italic">
           {step.statementBefore}
-          <span className="text-near-black font-medium not-italic">
+          <span className="text-near-black font-semibold not-italic">
             {step.statementAccent}
           </span>
         </p>
@@ -59,27 +59,56 @@ function DefaultCard({ step, className }: { step: ProcessStep; className?: strin
   );
 }
 
+const PALETTE_SWATCHES = [
+  "bg-near-black",
+  "bg-near-black/60",
+  "bg-near-black/30",
+  "bg-near-black/10",
+  "bg-accent",
+] as const;
+
 function FeaturedCard({ step }: { step: ProcessStep }) {
   return (
     <div
       data-testid={`process-card-${step.index}`}
       data-ai-action={`view-process-step-${step.index}`}
-      className="lg:col-start-2 lg:row-start-1 lg:row-span-2 relative rounded-3xl bg-white border border-near-black/10 overflow-hidden flex flex-col min-h-64"
+      className="lg:col-start-2 lg:row-start-1 lg:row-span-2 rounded-3xl bg-pricing border border-near-black/10 flex flex-col min-h-64"
     >
-      <div className="p-8">
+      {/* Header */}
+      <div className="p-6 flex items-start justify-between">
+        <div>
+          <h3 className="heading-2 text-near-black">{step.shortTitle}</h3>
+          <p className="text-xs font-mono text-near-black/40 mt-2">{step.duration}</p>
+        </div>
         <span
-          className="tag font-mono border border-near-black/20"
+          className="tag font-mono border border-near-black/20 ml-4 shrink-0"
           aria-hidden="true"
         >
           {step.index}
         </span>
       </div>
-      <img
-        src="/illustration-process.svg"
-        alt=""
-        aria-hidden="true"
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-2/3 w-auto object-contain object-bottom pointer-events-none"
-      />
+
+      {/* Type specimen — визуальный акцент */}
+      <div className="flex-1 flex flex-col items-center justify-center px-8 py-4" aria-hidden="true">
+        <p className="text-specimen font-black italic tracking-tighter leading-none text-near-black select-none">
+          Аа
+        </p>
+        <div className="flex gap-3 mt-8">
+          {PALETTE_SWATCHES.map((color, i) => (
+            <span key={i} className={`w-8 h-8 rounded-full ${color}`} />
+          ))}
+        </div>
+      </div>
+
+      {/* Statement */}
+      <div className="p-6 pt-0">
+        <p className="text-sm text-near-black/60 italic">
+          {step.statementBefore}
+          <span className="text-near-black font-semibold not-italic">
+            {step.statementAccent}
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default function ProcessTabs() {
   const active = processSteps[activeIndex];
 
   return (
-    <div className="rounded-3xl border border-near-black/10 overflow-hidden flex flex-col h-panel-process">
+    <div className="rounded-3xl border border-near-black/10 flex flex-col h-panel-process">
       {/* ── Tab bar ── */}
       <div className="flex border-b border-near-black/10" role="tablist" aria-label="Этапы работы">
         {processSteps.map((step, i) => {
@@ -31,7 +31,7 @@ export default function ProcessTabs() {
                   : "bg-transparent text-near-black/50 hover:text-near-black hover:bg-near-black/5"
               }`}
             >
-              <span className="font-medium">{step.shortTitle}</span>
+              <span className="font-semibold">{step.shortTitle}</span>
               <span
                 className={`font-mono text-xs px-2 py-1 rounded-lg ${
                   isActive

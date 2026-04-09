@@ -9,13 +9,11 @@ export default function About() {
       aria-label="О себе"
       data-testid="section-hello"
       data-ai-action="view-about"
-      className="section h-screen flex flex-col lg:flex-row lg:items-center px-6 lg:px-16 py-12"
-      style={{ backgroundColor: "#5900CC", color: "#F4E9E1" }}
+      className="section !min-h-0 flex flex-col lg:flex-row lg:items-center lg:px-16 py-12 bg-about-bg text-about-fg"
     >
       {/* Section label — скрыт на мобильном, чтобы не уходить за экран */}
       <div
-        className="hidden lg:block absolute top-10 left-nav text-xs uppercase tracking-widest"
-        style={{ color: "rgba(244,233,225,0.4)" }}
+        className="hidden lg:block absolute top-10 left-nav text-xs uppercase tracking-widest text-about-fg-muted"
         aria-hidden="true"
       >
         {hello.sectionLabel} <span className="ml-2">● 01</span>
@@ -24,8 +22,7 @@ export default function About() {
       {/* Левая колонка: заголовок */}
       <div className="w-full lg:w-2/5 flex items-end lg:items-center">
         <h2
-          className="text-hero font-normal"
-          style={{ color: "#F4E9E1" }}
+          className="text-hero font-normal text-about-fg"
         >
           {hello.sectionTitle}
         </h2>
@@ -36,14 +33,12 @@ export default function About() {
         {/* Bio */}
         <div>
           <h3
-            className="text-section-heading mb-2"
-            style={{ color: "#F4E9E1" }}
+            className="text-section-heading mb-2 text-about-fg"
           >
             {hello.bioHeading}
           </h3>
           <p
-            className="text-base font-normal leading-relaxed"
-            style={{ color: "rgba(244,233,225,0.8)" }}
+            className="text-base font-normal leading-relaxed text-about-fg-dim"
           >
             {hello.bio}
           </p>
@@ -52,7 +47,7 @@ export default function About() {
         {/* Divider */}
         <hr
           aria-hidden="true"
-          style={{ borderTop: "1px solid rgba(244,233,225,0.2)" }}
+          className="border-t border-about-divider"
         />
 
         {/* Manifesto */}
@@ -60,20 +55,17 @@ export default function About() {
           {hello.manifesto.map((item) => (
             <li key={item.index}>
               <span
-                className="text-xs font-normal block mb-1"
-                style={{ color: "rgba(244,233,225,0.4)" }}
+                className="text-xs font-normal block mb-1 text-about-fg-muted"
               >
                 {item.index}
               </span>
               <h4
-                className="text-lg font-medium mb-2"
-                style={{ color: "#F4E9E1" }}
+                className="heading-4 mb-2 text-about-fg"
               >
                 {item.heading}
               </h4>
               <p
-                className="text-sm font-normal leading-relaxed"
-                style={{ color: "rgba(244,233,225,0.7)" }}
+                className="text-sm font-normal leading-relaxed text-about-fg-dim"
               >
                 {item.body}
               </p>
@@ -85,25 +77,24 @@ export default function About() {
         <div className="flex flex-wrap gap-3 pt-2">
           {owner.openToWork && (
             <span
-              className="tag border"
-              style={{
-                color: "#F4E9E1",
-                borderColor: "rgba(244,233,225,0.3)",
-              }}
+              className="tag border text-about-fg border-about-divider"
             >
               {hello.openToWork}
             </span>
           )}
           <span
-            className="tag border"
-            style={{
-              color: "#F4E9E1",
-              borderColor: "rgba(244,233,225,0.3)",
-            }}
+            className="tag border text-about-fg border-about-divider"
           >
             {hello.location}
           </span>
         </div>
+
+        {/* Ideal fit */}
+        {hello.idealFit && (
+          <p className="text-sm text-about-fg-muted leading-relaxed border-t border-about-divider pt-6">
+            {hello.idealFit}
+          </p>
+        )}
       </div>
     </section>
   );

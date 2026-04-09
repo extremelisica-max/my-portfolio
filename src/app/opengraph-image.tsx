@@ -66,7 +66,7 @@ export default function OgImage() {
         <div
           style={{
             display: "flex",
-            fontSize: "36px",
+            fontSize: "24px",
             fontWeight: 300,
             color: "#0E0E0E",
             letterSpacing: "0.01em",

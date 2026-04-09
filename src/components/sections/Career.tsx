@@ -16,7 +16,7 @@ export default function Career() {
       aria-label="Карьера"
       data-testid="section-career"
       data-ai-action="view-career"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2"
+      className="section !min-h-0 pt-2 pb-6 flex flex-col gap-2"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-near-black border border-cream/15 overflow-hidden">

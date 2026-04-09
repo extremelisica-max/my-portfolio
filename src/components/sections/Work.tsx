@@ -8,7 +8,7 @@ export default function Work() {
       aria-label="Проекты"
       data-testid="section-projects"
       data-ai-action="view-projects"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2"
+      className="section pt-2 pb-6 flex flex-col gap-2"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-projects border border-cream/15 overflow-hidden">

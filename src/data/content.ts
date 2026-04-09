@@ -11,9 +11,18 @@ export const landing = {
   /** Брендовый герой-текст внизу секции */
   title: "KARS",
   /** Жирный вводный заголовок */
-  hero: "Александр Карсунцев, продуктовый дизайнер, проектирую high-load сервисы для реального мира, а не для презентаций",
+  hero: "Проектирую сложные B2B-интерфейсы, где одна ошибка сценария стоит денег. Сокращаю время согласования, строю дизайн-системы, защищаю решения метриками.",
   /** Теги специализации */
   tags: ["Product Design", "B2B SaaS", "Web", "Design System", "ERP"],
+  /** Ссылка на Telegram */
+  telegram: "https://t.me/Karsun_a",
+  /** Метрики для stats-блока */
+  stats: [
+    { value: "5+", label: "лет опыта" },
+    { value: "−40%", label: "ускорение согласований" },
+    { value: "3+", label: "отрасли" },
+    { value: "2", label: "дизайн-системы с нуля" },
+  ],
 };
 
 // ─────────────────────────────────────────
@@ -49,6 +58,7 @@ export const hello = {
   /** Статус */
   openToWork: "Открыт к предложениям",
   location: "Самара · Удалённо",
+  idealFit: "Лучший вариант: B2B/SaaS-команда, где дизайн участвует в Discovery, а не получает ТЗ на экраны. Enterprise, строительный или промышленный стек — плюс.",
 };
 
 // ─────────────────────────────────────────
@@ -154,22 +164,25 @@ export const contact = {
   /** Три канала связи */
   channels: [
     {
-      label: "Проектное предложение",
-      cta: "Написать на почту",
-      value: "extremelisica@gmail.com",
-      href: "mailto:extremelisica@gmail.com",
-    },
-    {
       label: "Быстро и удобно",
       cta: "Написать в Telegram",
       value: "@Karsun_a",
       href: "https://t.me/Karsun_a",
+      primary: true,
+    },
+    {
+      label: "Проектное предложение",
+      cta: "Написать на почту",
+      value: "extremelisica@gmail.com",
+      href: "mailto:extremelisica@gmail.com",
+      primary: false,
     },
     {
       label: "Портфолио проектов",
       cta: "Смотреть на Behance",
       value: "behance.net/extremelis4b1e",
       href: "https://behance.net/extremelis4b1e",
+      primary: false,
     },
   ],
 

@@ -3,11 +3,11 @@ import { serviceCategories, services } from "@/data/content";
 export default function ServicesPricing() {
   return (
     <section
-      id="services"
+      id="services-alt"
       aria-label="Услуги и цены"
       data-testid="section-services-pricing"
       data-ai-action="view-services-pricing"
-      className="section pt-2 pr-6 pb-6 flex flex-col gap-2"
+      className="section pt-2 pb-6 flex flex-col gap-2"
     >
       {/* ── Hero card ── */}
       <div className="work-hero relative rounded-3xl bg-near-black border border-cream/15 overflow-hidden">
@@ -29,10 +29,10 @@ export default function ServicesPricing() {
             key={category.index}
             data-testid={`service-category-${category.index}`}
             data-ai-action="view-service-category"
-            className="bg-white rounded-3xl p-8 border border-near-black/10"
+            className="bg-white rounded-3xl p-6 border border-near-black/10"
           >
-            <div className="flex items-start justify-between mb-8">
-              <h2 className="text-2xl font-black tracking-tighter text-near-black leading-none">
+            <div className="flex items-start justify-between mb-6">
+              <h2 className="heading-1 text-near-black">
                 {category.title}
               </h2>
               <span
@@ -63,10 +63,10 @@ export default function ServicesPricing() {
             key={item.index}
             data-testid={`service-card-${item.index}`}
             data-ai-action="view-service"
-            className="bg-white rounded-3xl p-8 border border-near-black/10"
+            className="bg-white rounded-3xl p-6 border border-near-black/10"
           >
-            <div className="flex items-start justify-between mb-8">
-              <h3 className="text-2xl font-black tracking-tighter text-near-black leading-none">
+            <div className="flex items-start justify-between mb-6">
+              <h3 className="heading-2 text-near-black">
                 {item.title}
               </h3>
               <span
